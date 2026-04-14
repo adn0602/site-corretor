@@ -141,9 +141,23 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeLeft{from{opacity:0;transform:translate(24px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
 
+/* HAMBURGUER */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:36px;height:36px}
+.hamburger span{display:block;height:2px;background:var(--navy);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-soft);z-index:99;flex-direction:column;padding:1rem 1.5rem 1.5rem;gap:.25rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:.9rem;color:var(--text-dark);text-decoration:none;padding:.75rem .5rem;border-bottom:1px solid var(--gray-soft);letter-spacing:.04em}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu-wa{margin-top:.5rem;background:var(--navy);color:var(--white)!important;text-align:center;border-radius:2px;padding:.85rem!important;font-weight:500;border:none!important}
+
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
   .nav-links{display:none}
+  .nav-cta-desktop{display:none}
+  .hamburger{display:flex}
   .hero{padding:7rem 1.5rem 4rem}
   .hero-bg-block,.hero-grid,.hero-float{display:none}
   .about{grid-template-columns:1fr}
@@ -156,11 +170,15 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   .regioes{padding:4rem 1.5rem}
   .lead-container{grid-template-columns:1fr;gap:2.5rem}
   .lead-section{padding:4rem 1.5rem}
+  .field-row{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
   .footer-links{justify-content:center}
 }
 @media(max-width:500px){
   .reg-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .hero-btns{flex-direction:column}
+  .hero-btns a{text-align:center}
 }
 </style>
 </head>
@@ -169,14 +187,24 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Alexandre Damasceno<span>.</span></div>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#empreendimentos">Empreendimentos</a></li>
-    <li><a href="#regioes">Regiões</a></li>
-    <li><a href="#contato">Contato</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+    <li><a href="#empreendimentos" onclick="closeMenu()">Empreendimentos</a></li>
+    <li><a href="#regioes" onclick="closeMenu()">Regiões</a></li>
+    <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
   </ul>
-  <a href="#contato" class="nav-cta">Falar com corretor</a>
+  <a href="#contato" class="nav-cta nav-cta-desktop">Falar com corretor</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="#empreendimentos" onclick="closeMenu()">Empreendimentos</a>
+  <a href="#regioes" onclick="closeMenu()">Regiões</a>
+  <a href="#contato" onclick="closeMenu()">Contato</a>
+  <a href="https://wa.me/5521972653971?text=Ol%C3%A1%20Alexandre!%20Vim%20pelo%20seu%20site." target="_blank" class="mobile-menu-wa">💬 WhatsApp</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -187,7 +215,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
     <h1>Empreendimentos<br>de alto padrão<br>com <em>quem entende</em>.</h1>
     <p>Sou Alexandre Damasceno, consultor especializado em imóveis e empreendimentos exclusivos no Rio de Janeiro. Atendimento personalizado para quem busca o melhor.</p>
     <div class="hero-btns">
-      <a href="#contato" class="btn-primary">Quero ser atendido</a>
+      <a href="https://wa.me/5521972653971?text=Olá%20Alexandre!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos." target="_blank" class="btn-primary">💬 Falar no WhatsApp</a>
       <a href="#empreendimentos" class="btn-outline">Ver empreendimentos</a>
     </div>
   </div>
@@ -243,7 +271,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 
       <!-- PURA por Artefacto -->
       <div class="emp-slide">
-        <img class="emp-slide-img" src="https://ilhapuraartefacto.com.br/wp-content/uploads/2024/10/pura-artefacto-fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80'" alt="PURA por Artefacto Ilha Pura"/>
+        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="PURA por Artefacto Ilha Pura"/>
         <div class="emp-slide-body">
           <div class="emp-slide-tag">Lançamento 2026 · Barra da Tijuca</div>
           <div class="emp-slide-name">PURA por Artefacto</div>
@@ -254,7 +282,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 
       <!-- Lanai Recreio -->
       <div class="emp-slide">
-        <img class="emp-slide-img" src="https://lanaipontaloceanico.com/wp-content/uploads/2024/lanai-fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80'" alt="Lanai Recreio Pontal Oceânico"/>
+        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Lanai Recreio Pontal Oceânico"/>
         <div class="emp-slide-body">
           <div class="emp-slide-tag">Recreio · Pontal Oceânico</div>
           <div class="emp-slide-name">Lanai Recreio</div>
@@ -265,7 +293,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 
       <!-- Oceana Golf -->
       <div class="emp-slide">
-        <img class="emp-slide-img" src="https://www.patrimar.com.br/imoveis/oceana-golf/assets/img/fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80'" alt="Oceana Golf Barra da Tijuca"/>
+        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Oceana Golf Barra da Tijuca"/>
         <div class="emp-slide-body">
           <div class="emp-slide-tag">Barra da Tijuca</div>
           <div class="emp-slide-name">Oceana Golf</div>
@@ -276,7 +304,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 
       <!-- Grand Quartier Rio 2 -->
       <div class="emp-slide">
-        <img class="emp-slide-img" src="https://grandquartierresidencial.com.br/wp-content/uploads/2024/01/grand-quartier-fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80'" alt="Grand Quartier Rio 2"/>
+        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80" alt="Grand Quartier Rio 2"/>
         <div class="emp-slide-body">
           <div class="emp-slide-tag">Barra da Tijuca · Rio 2</div>
           <div class="emp-slide-name">Grand Quartier Rio 2</div>
@@ -428,6 +456,18 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 <div class="toast" id="toast">✓ Mensagem enviada! Retorno em até 1 hora.</div>
 
 <script>
+// Menu hamburguer
+function toggleMenu(){
+  const h = document.getElementById('hamburger');
+  const m = document.getElementById('mobileMenu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
 // Carrossel
 const track = document.getElementById('track');
 const prev = document.getElementById('prev');
@@ -443,16 +483,36 @@ track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor 
 track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
 track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
 
-// Form
+// Form → WhatsApp
 function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Enviando...'; btn.disabled = true;
+
+  const form = e.target;
+  const nome = form.querySelector('input[type="text"]').value;
+  const whatsapp = form.querySelector('input[type="tel"]').value;
+  const email = form.querySelector('input[type="email"]').value || 'Não informado';
+  const interesse = form.querySelectorAll('select')[0].value;
+  const regiao = form.querySelectorAll('select')[1].value || 'Não definida';
+  const orcamento = form.querySelectorAll('select')[2].value || 'Não definido';
+
+  const msg = `Olá Alexandre! Vim pelo seu site 👋\n\n`
+    + `*Nome:* ${nome}\n`
+    + `*WhatsApp:* ${whatsapp}\n`
+    + `*E-mail:* ${email}\n`
+    + `*Interesse:* ${interesse}\n`
+    + `*Região:* ${regiao}\n`
+    + `*Orçamento:* ${orcamento}`;
+
   setTimeout(() => {
-    btn.textContent = '✓ Enviado!'; btn.classList.add('sent');
+    btn.textContent = '✓ Redirecionando...'; btn.classList.add('sent');
     const t = document.getElementById('toast'); t.style.display = 'block';
-    setTimeout(() => { t.style.display = 'none'; }, 4000);
-  }, 1200);
+    setTimeout(() => {
+      t.style.display = 'none';
+      window.open('https://wa.me/5521972653971?text=' + encodeURIComponent(msg), '_blank');
+    }, 1000);
+  }, 800);
 }
 
 // Scroll reveal
