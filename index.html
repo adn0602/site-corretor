@@ -24,25 +24,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-cta{font-size:0.78rem;font-weight:500;color:var(--white);background:var(--navy);padding:.6rem 1.4rem;border-radius:2px;text-decoration:none;transition:background .2s}
 .nav-cta:hover{background:var(--navy-light)}
 
-/* HERO */
-.hero{min-height:100vh;background:var(--off-white);display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 3rem 5rem}
-.hero-bg-block{position:absolute;top:0;right:0;width:46%;height:100%;background:var(--navy);clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
-.hero-grid{position:absolute;top:0;right:0;width:46%;height:100%;background-image:linear-gradient(rgba(201,168,76,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.07) 1px,transparent 1px);background-size:52px 52px;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
-.hero-content{position:relative;z-index:2;max-width:580px}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp .7s .2s forwards}
+/* HERO SLIDER FULLSCREEN */
+.hero-slider{position:relative;width:100%;height:100vh;overflow:hidden;background:#000}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;z-index:0}
+.hero-slide.active{opacity:1;z-index:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.5)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,30,.85) 0%,rgba(5,15,30,.2) 60%,transparent 100%);z-index:2}
+.hero-content{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:0 5% 5rem}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.25rem}
 .hero-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,4.5vw,4rem);font-weight:500;color:var(--navy);line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .35s forwards}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero p{font-size:1rem;color:var(--text-mid);line-height:1.8;max-width:460px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .5s forwards}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .65s forwards}
-.btn-primary{padding:.9rem 2rem;background:var(--navy);color:var(--white);font-size:.85rem;font-weight:500;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s}
-.btn-primary:hover{background:var(--navy-light);transform:translateY(-1px)}
-.btn-outline{padding:.9rem 2rem;background:transparent;color:var(--navy);font-size:.85rem;border-radius:2px;text-decoration:none;border:1.5px solid var(--navy);cursor:pointer;transition:border-color .2s,color .2s}
+.hero-slide-info{margin-bottom:2rem}
+.hero-slide-label{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.4);display:inline-block;padding:4px 12px;border-radius:2px;margin-bottom:.75rem}
+.hero-slide-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:500;color:var(--white);line-height:1.05;margin-bottom:.6rem}
+.hero-slide-sub{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.6;max-width:560px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{padding:.9rem 2rem;background:#25D366;color:var(--white);font-size:.85rem;font-weight:500;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#1eaa52;transform:translateY(-1px)}
+.btn-outline{padding:.9rem 2rem;background:transparent;color:var(--white);font-size:.85rem;border-radius:2px;text-decoration:none;border:1.5px solid rgba(255,255,255,.4);cursor:pointer;transition:border-color .2s,color .2s}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.hero-float{position:absolute;right:4%;top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:12px;opacity:0;animation:fadeLeft .8s .8s forwards}
-.hero-stat-card{background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:3px;padding:1.25rem 1.5rem;min-width:175px;backdrop-filter:blur(8px)}
-.hero-stat-card .num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold-light);line-height:1}
-.hero-stat-card .lbl{font-size:.73rem;color:rgba(255,255,255,.55);margin-top:4px}
+
+/* Stats bar */
+.hero-stats{position:absolute;bottom:0;right:5%;z-index:3;display:flex;flex-direction:column;gap:10px;padding-bottom:5rem}
+.hero-stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);border-radius:3px;padding:1.1rem 1.4rem;min-width:165px;backdrop-filter:blur(8px)}
+.hero-stat-card .num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--gold-light);line-height:1}
+.hero-stat-card .lbl{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* Slider controls */
+.slider-dots{position:absolute;top:50%;right:2rem;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:8px}
+.slider-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
+.slider-dot.active{background:var(--gold);transform:scale(1.4)}
+.slider-arrows{position:absolute;bottom:5rem;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:8px}
+.slider-arrow{width:42px;height:42px;border-radius:2px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--white);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.slider-arrow:hover{border-color:var(--gold);background:rgba(201,168,76,.15)}
 
 /* SOBRE */
 .about{display:grid;grid-template-columns:1fr 1fr}
@@ -58,28 +71,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .diferencial-icon svg{stroke:var(--gold)}
 .diferencial h3{font-size:.9rem;font-weight:500;color:var(--navy);margin-bottom:4px}
 .diferencial p{font-size:.85rem;color:var(--text-mid);line-height:1.6}
-
-/* CARROSSEL */
-.carrossel-section{padding:6rem 0;background:var(--navy);overflow:hidden}
-.carrossel-header{padding:0 3rem;margin-bottom:3rem}
-.carrossel-header .section-tag{color:var(--gold)}
-.carrossel-header h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:500;color:var(--white);margin-top:.5rem}
-.carrossel-header p{font-size:.95rem;color:rgba(255,255,255,.5);margin-top:.5rem}
-.carrossel-track-wrap{position:relative}
-.carrossel-track{display:flex;gap:24px;padding:0 3rem;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;user-select:none}
-.carrossel-track::-webkit-scrollbar{display:none}
-.emp-slide{min-width:420px;border-radius:4px;overflow:hidden;background:#111;position:relative;flex-shrink:0}
-.emp-slide-img{width:100%;height:300px;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.75)}
-.emp-slide:hover .emp-slide-img{transform:scale(1.04);filter:brightness(.6)}
-.emp-slide-body{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%)}
-.emp-slide-tag{display:inline-block;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.4);padding:3px 10px;border-radius:2px;margin-bottom:.6rem}
-.emp-slide-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--white);line-height:1.2;margin-bottom:.4rem}
-.emp-slide-sub{font-size:.8rem;color:rgba(255,255,255,.6)}
-.emp-slide-cta{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--gold-light);margin-top:.75rem;text-decoration:none;transition:gap .2s}
-.emp-slide-cta:hover{gap:10px}
-.carrossel-nav{display:flex;gap:10px;padding:1.5rem 3rem 0}
-.carrossel-btn{width:44px;height:44px;border-radius:2px;border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--white);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
-.carrossel-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.1)}
 
 /* REGIÕES */
 .regioes{padding:6rem 3rem;background:var(--white)}
@@ -158,14 +149,12 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   .nav-links{display:none}
   .nav-cta-desktop{display:none}
   .hamburger{display:flex}
-  .hero{padding:7rem 1.5rem 4rem}
-  .hero-bg-block,.hero-grid,.hero-float{display:none}
+  .hero-stats{display:none}
+  .slider-dots{right:1rem}
+  .hero-content{padding:0 1.5rem 6rem}
+  .slider-arrows{bottom:1.5rem}
   .about{grid-template-columns:1fr}
   .about-left,.about-right{padding:3rem 1.5rem;border:none}
-  .carrossel-section{padding:4rem 0}
-  .carrossel-header{padding:0 1.5rem}
-  .carrossel-track{padding:0 1.5rem}
-  .emp-slide{min-width:300px}
   .reg-grid{grid-template-columns:1fr 1fr}
   .regioes{padding:4rem 1.5rem}
   .lead-container{grid-template-columns:1fr;gap:2.5rem}
@@ -176,7 +165,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 }
 @media(max-width:500px){
   .reg-grid{grid-template-columns:1fr}
-  .hero h1{font-size:2.2rem}
+  .hero-slide-name{font-size:2rem}
   .hero-btns{flex-direction:column}
   .hero-btns a{text-align:center}
 }
@@ -206,24 +195,69 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   <a href="https://wa.me/5521972653971?text=Ol%C3%A1%20Alexandre!%20Vim%20pelo%20seu%20site." target="_blank" class="mobile-menu-wa">💬 WhatsApp</a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-block"></div>
-  <div class="hero-grid"></div>
+<!-- HERO SLIDER FULLSCREEN -->
+<section class="hero-slider" id="empreendimentos">
+
+  <div class="hero-slide active">
+    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80" alt="PURA por Artefacto"/>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-slide">
+    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80" alt="Lanai Recreio"/>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-slide">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80" alt="Oceana Golf"/>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-slide">
+    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80" alt="Grand Quartier"/>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-slide">
+    <img src="https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?w=1600&q=80" alt="Zona Sul"/>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Conteúdo dinâmico -->
   <div class="hero-content">
     <div class="hero-tag">Alto Padrão · Barra · Recreio · Zona Sul</div>
-    <h1>Empreendimentos<br>de alto padrão<br>com <em>quem entende</em>.</h1>
-    <p>Sou Alexandre Damasceno, consultor especializado em imóveis e empreendimentos exclusivos no Rio de Janeiro. Atendimento personalizado para quem busca o melhor.</p>
+    <div class="hero-slide-info" id="slideInfo">
+      <div class="hero-slide-label" id="slideLabel">Lançamento 2026 · Barra da Tijuca</div>
+      <div class="hero-slide-name" id="slideName">PURA por Artefacto</div>
+      <div class="hero-slide-sub" id="slideSub">Ilha Pura · BTG Pactual · 544 unidades · 3 e 4 suítes · 117 a 264 m²</div>
+    </div>
     <div class="hero-btns">
-      <a href="https://wa.me/5521972653971?text=Olá%20Alexandre!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos." target="_blank" class="btn-primary">💬 Falar no WhatsApp</a>
-      <a href="#empreendimentos" class="btn-outline">Ver empreendimentos</a>
+      <a href="https://wa.me/5521972653971?text=Olá%20Alexandre!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos." target="_blank" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.849L.057 23.714a.5.5 0 00.614.664l6.083-1.593A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 01-5.127-1.416l-.367-.217-3.804.997.969-3.713-.238-.381A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="#sobre" class="btn-outline">Conheça Alexandre ↓</a>
     </div>
   </div>
-  <div class="hero-float">
+
+  <!-- Stats lado direito -->
+  <div class="hero-stats">
     <div class="hero-stat-card"><div class="num">200+</div><div class="lbl">imóveis negociados</div></div>
     <div class="hero-stat-card"><div class="num">10+</div><div class="lbl">anos de experiência</div></div>
     <div class="hero-stat-card"><div class="num">98%</div><div class="lbl">clientes satisfeitos</div></div>
   </div>
+
+  <!-- Dots navegação -->
+  <div class="slider-dots" id="sliderDots">
+    <button class="slider-dot active" onclick="goToSlide(0)"></button>
+    <button class="slider-dot" onclick="goToSlide(1)"></button>
+    <button class="slider-dot" onclick="goToSlide(2)"></button>
+    <button class="slider-dot" onclick="goToSlide(3)"></button>
+    <button class="slider-dot" onclick="goToSlide(4)"></button>
+  </div>
+
+  <!-- Setas -->
+  <div class="slider-arrows">
+    <button class="slider-arrow" onclick="changeSlide(-1)">&#8592;</button>
+    <button class="slider-arrow" onclick="changeSlide(1)">&#8594;</button>
+  </div>
+
 </section>
 
 <!-- SOBRE -->
@@ -255,80 +289,6 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
       <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
       <div><h3>Resposta em até 1 hora</h3><p>Disponibilidade e agilidade para apresentar as melhores oportunidades no momento certo.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- CARROSSEL DE EMPREENDIMENTOS -->
-<section class="carrossel-section" id="empreendimentos">
-  <div class="carrossel-header">
-    <span class="section-tag">Vitrine de lançamentos</span>
-    <h2>Empreendimentos em destaque</h2>
-    <p>Os empreendimentos mais exclusivos do Rio de Janeiro</p>
-  </div>
-  <div class="carrossel-track-wrap">
-    <div class="carrossel-track" id="track">
-
-
-      <!-- PURA por Artefacto -->
-      <div class="emp-slide">
-        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="PURA por Artefacto Ilha Pura"/>
-        <div class="emp-slide-body">
-          <div class="emp-slide-tag">Lançamento 2026 · Barra da Tijuca</div>
-          <div class="emp-slide-name">PURA por Artefacto</div>
-          <div class="emp-slide-sub">Ilha Pura · BTG Pactual · 544 unidades · 3 e 4 suítes · 117 a 264 m²</div>
-          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
-        </div>
-      </div>
-
-      <!-- Lanai Recreio -->
-      <div class="emp-slide">
-        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Lanai Recreio Pontal Oceânico"/>
-        <div class="emp-slide-body">
-          <div class="emp-slide-tag">Recreio · Pontal Oceânico</div>
-          <div class="emp-slide-name">Lanai Recreio</div>
-          <div class="emp-slide-sub">Calçada & Montserrat · 2 e 3 quartos · 52 a 116 m² · Obra por administração</div>
-          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
-        </div>
-      </div>
-
-      <!-- Oceana Golf -->
-      <div class="emp-slide">
-        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Oceana Golf Barra da Tijuca"/>
-        <div class="emp-slide-body">
-          <div class="emp-slide-tag">Barra da Tijuca</div>
-          <div class="emp-slide-name">Oceana Golf</div>
-          <div class="emp-slide-sub">Patrimar · Ao lado do Campo Olímpico · 194 a 537 m² · 4 suítes · Vista mar</div>
-          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
-        </div>
-      </div>
-
-      <!-- Grand Quartier Rio 2 -->
-      <div class="emp-slide">
-        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80" alt="Grand Quartier Rio 2"/>
-        <div class="emp-slide-body">
-          <div class="emp-slide-tag">Barra da Tijuca · Rio 2</div>
-          <div class="emp-slide-name">Grand Quartier Rio 2</div>
-          <div class="emp-slide-sub">Patrimar & Carvalho Hosken · 2 a 4 suítes · Coberturas até 292 m²</div>
-          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
-        </div>
-      </div>
-
-      <!-- Zona Sul -->
-      <div class="emp-slide">
-        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?w=800&q=80" alt="Zona Sul Rio de Janeiro"/>
-        <div class="emp-slide-body">
-          <div class="emp-slide-tag">Zona Sul · Ipanema · Leblon</div>
-          <div class="emp-slide-name">Lançamentos Zona Sul</div>
-          <div class="emp-slide-sub">Ipanema · Leblon · Botafogo · Empreendimentos exclusivos com vista mar</div>
-          <a href="#contato" class="emp-slide-cta">Consulte disponibilidade →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="carrossel-nav">
-    <button class="carrossel-btn" id="prev" aria-label="Anterior">&#8592;</button>
-    <button class="carrossel-btn" id="next" aria-label="Próximo">&#8594;</button>
   </div>
 </section>
 
@@ -468,20 +428,38 @@ function closeMenu(){
   document.getElementById('mobileMenu').classList.remove('open');
 }
 
-// Carrossel
-const track = document.getElementById('track');
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const slideW = () => track.querySelector('.emp-slide').offsetWidth + 24;
-next.addEventListener('click', () => track.scrollBy({left: slideW(), behavior: 'smooth'}));
-prev.addEventListener('click', () => track.scrollBy({left: -slideW(), behavior: 'smooth'}));
+// Slider fullscreen
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.slider-dot');
+const slideData = [
+  {label:'Lançamento 2026 · Barra da Tijuca', name:'PURA por Artefacto', sub:'Ilha Pura · BTG Pactual · 544 unidades · 3 e 4 suítes · 117 a 264 m²'},
+  {label:'Recreio · Pontal Oceânico', name:'Lanai Recreio', sub:'Calçada & Montserrat · 2 e 3 quartos · 52 a 116 m² · Obra por administração'},
+  {label:'Barra da Tijuca', name:'Oceana Golf', sub:'Patrimar · Ao lado do Campo Olímpico · 194 a 537 m² · 4 suítes · Vista mar'},
+  {label:'Barra da Tijuca · Rio 2', name:'Grand Quartier Rio 2', sub:'Patrimar & Carvalho Hosken · 2 a 4 suítes · Coberturas até 292 m²'},
+  {label:'Zona Sul · Ipanema · Leblon', name:'Lançamentos Zona Sul', sub:'Ipanema · Leblon · Botafogo · Empreendimentos exclusivos com vista mar'}
+];
+let current = 0, timer;
 
-// Drag to scroll
-let isDown = false, startX, scrollLeft;
-track.addEventListener('mousedown', e => { isDown = true; track.style.cursor = 'grabbing'; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
-track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
-track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+function updateSlideContent(idx) {
+  document.getElementById('slideLabel').textContent = slideData[idx].label;
+  document.getElementById('slideName').textContent = slideData[idx].name;
+  document.getElementById('slideSub').textContent = slideData[idx].sub;
+}
+
+function goToSlide(idx) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = (idx + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  updateSlideContent(current);
+  clearInterval(timer);
+  timer = setInterval(() => goToSlide(current + 1), 5000);
+}
+
+function changeSlide(dir) { goToSlide(current + dir); }
+
+timer = setInterval(() => goToSlide(current + 1), 5000);
 
 // Form → WhatsApp
 function submitForm(e) {
