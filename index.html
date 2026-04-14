@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Alexandre Damasceno | Imóveis de Alto Padrão · Rio de Janeiro</title>
+<meta name="description" content="Especialista em empreendimentos de alto padrão na Barra da Tijuca, Recreio e Zona Sul do Rio de Janeiro."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#0B1F3A;--navy-mid:#163354;--navy-light:#1E4A7A;--gold:#C9A84C;--gold-light:#E2C47A;--white:#FFFFFF;--off-white:#F8F6F1;--gray-soft:#ECEAE4;--gray-mid:#9A9890;--text-dark:#0D1B2A;--text-mid:#4A5568}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-soft)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--navy)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;color:var(--text-mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-size:0.78rem;font-weight:500;color:var(--white);background:var(--navy);padding:.6rem 1.4rem;border-radius:2px;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--navy-light)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--off-white);display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 3rem 5rem}
+.hero-bg-block{position:absolute;top:0;right:0;width:46%;height:100%;background:var(--navy);clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
+.hero-grid{position:absolute;top:0;right:0;width:46%;height:100%;background-image:linear-gradient(rgba(201,168,76,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.07) 1px,transparent 1px);background-size:52px 52px;clip-path:polygon(14% 0,100% 0,100% 100%,0% 100%)}
+.hero-content{position:relative;z-index:2;max-width:580px}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp .7s .2s forwards}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,4.5vw,4rem);font-weight:500;color:var(--navy);line-height:1.1;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .35s forwards}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:1rem;color:var(--text-mid);line-height:1.8;max-width:460px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .5s forwards}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .65s forwards}
+.btn-primary{padding:.9rem 2rem;background:var(--navy);color:var(--white);font-size:.85rem;font-weight:500;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--navy-light);transform:translateY(-1px)}
+.btn-outline{padding:.9rem 2rem;background:transparent;color:var(--navy);font-size:.85rem;border-radius:2px;text-decoration:none;border:1.5px solid var(--navy);cursor:pointer;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-float{position:absolute;right:4%;top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:12px;opacity:0;animation:fadeLeft .8s .8s forwards}
+.hero-stat-card{background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:3px;padding:1.25rem 1.5rem;min-width:175px;backdrop-filter:blur(8px)}
+.hero-stat-card .num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold-light);line-height:1}
+.hero-stat-card .lbl{font-size:.73rem;color:rgba(255,255,255,.55);margin-top:4px}
+
+/* SOBRE */
+.about{display:grid;grid-template-columns:1fr 1fr}
+.about-left{background:var(--white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--gray-soft)}
+.section-tag{font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:block}
+.about-left h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:500;color:var(--navy);line-height:1.15;margin-bottom:1.25rem}
+.about-left p{font-size:.95rem;color:var(--text-mid);line-height:1.85;margin-bottom:.9rem}
+.creci-badge{display:inline-flex;align-items:center;gap:8px;margin-top:1rem;padding:.5rem 1rem;border:1px solid var(--gray-soft);border-radius:2px;font-size:.78rem;color:var(--text-mid)}
+.creci-badge strong{color:var(--navy);font-weight:500}
+.about-right{background:var(--off-white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:1.75rem}
+.diferencial{display:flex;gap:1.25rem;align-items:flex-start}
+.diferencial-icon{width:44px;height:44px;min-width:44px;background:var(--navy);border-radius:2px;display:flex;align-items:center;justify-content:center}
+.diferencial-icon svg{stroke:var(--gold)}
+.diferencial h3{font-size:.9rem;font-weight:500;color:var(--navy);margin-bottom:4px}
+.diferencial p{font-size:.85rem;color:var(--text-mid);line-height:1.6}
+
+/* CARROSSEL */
+.carrossel-section{padding:6rem 0;background:var(--navy);overflow:hidden}
+.carrossel-header{padding:0 3rem;margin-bottom:3rem}
+.carrossel-header .section-tag{color:var(--gold)}
+.carrossel-header h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:500;color:var(--white);margin-top:.5rem}
+.carrossel-header p{font-size:.95rem;color:rgba(255,255,255,.5);margin-top:.5rem}
+.carrossel-track-wrap{position:relative}
+.carrossel-track{display:flex;gap:24px;padding:0 3rem;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;user-select:none}
+.carrossel-track::-webkit-scrollbar{display:none}
+.emp-slide{min-width:420px;border-radius:4px;overflow:hidden;background:#111;position:relative;flex-shrink:0}
+.emp-slide-img{width:100%;height:300px;object-fit:cover;display:block;transition:transform .4s;filter:brightness(.75)}
+.emp-slide:hover .emp-slide-img{transform:scale(1.04);filter:brightness(.6)}
+.emp-slide-body{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%)}
+.emp-slide-tag{display:inline-block;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.4);padding:3px 10px;border-radius:2px;margin-bottom:.6rem}
+.emp-slide-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--white);line-height:1.2;margin-bottom:.4rem}
+.emp-slide-sub{font-size:.8rem;color:rgba(255,255,255,.6)}
+.emp-slide-cta{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--gold-light);margin-top:.75rem;text-decoration:none;transition:gap .2s}
+.emp-slide-cta:hover{gap:10px}
+.carrossel-nav{display:flex;gap:10px;padding:1.5rem 3rem 0}
+.carrossel-btn{width:44px;height:44px;border-radius:2px;border:1px solid rgba(255,255,255,.2);background:transparent;color:var(--white);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.carrossel-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.1)}
+
+/* REGIÕES */
+.regioes{padding:6rem 3rem;background:var(--white)}
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:500;color:var(--navy);margin-top:.5rem}
+.reg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray-soft);border:1px solid var(--gray-soft)}
+.reg-card{background:var(--white);padding:2.5rem 2rem;transition:background .25s}
+.reg-card:hover{background:var(--navy)}
+.reg-card:hover .reg-num{color:rgba(255,255,255,.08)}
+.reg-card:hover .reg-name{color:var(--gold-light)}
+.reg-card:hover .reg-tag{background:rgba(201,168,76,.15);color:var(--gold-light)}
+.reg-card:hover .reg-desc{color:rgba(255,255,255,.55)}
+.reg-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:400;color:var(--gray-soft);line-height:1;margin-bottom:1rem;transition:color .25s}
+.reg-name{font-size:.95rem;font-weight:500;color:var(--navy);margin-bottom:.5rem;transition:color .25s}
+.reg-tag{display:inline-block;font-size:.68rem;font-weight:500;letter-spacing:.08em;padding:3px 10px;border-radius:20px;background:var(--off-white);color:var(--gold);margin-bottom:.65rem;transition:background .25s,color .25s}
+.reg-desc{font-size:.83rem;color:var(--text-mid);line-height:1.65;transition:color .25s}
+
+/* CONTATO */
+.lead-section{background:var(--navy);padding:6rem 3rem;position:relative;overflow:hidden}
+.lead-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:52px 52px}
+.lead-container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:980px;margin:0 auto;align-items:center}
+.lead-left .section-tag{color:var(--gold)}
+.lead-left h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:500;color:var(--white);line-height:1.15;margin-bottom:1.25rem}
+.lead-left h2 em{font-style:italic;color:var(--gold-light)}
+.lead-left>p{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:2rem}
+.social-links{display:flex;flex-direction:column;gap:.85rem}
+.social-link{display:flex;align-items:center;gap:14px;font-size:.9rem;color:rgba(255,255,255,.7);text-decoration:none;padding:.85rem 1.25rem;border:1px solid rgba(255,255,255,.1);border-radius:3px;transition:border-color .2s,background .2s,color .2s}
+.social-link:hover{border-color:var(--gold);background:rgba(201,168,76,.06);color:var(--gold-light)}
+.social-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-wa{background:#25D366}
+.icon-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.icon-fb{background:#1877F2}
+.social-link-text{display:flex;flex-direction:column}
+.social-link-label{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase}
+.social-link-value{font-size:.9rem;font-weight:500}
+.lead-form-card{background:var(--white);border-radius:3px;padding:2.5rem}
+.lead-form-card h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:500;color:var(--navy);margin-bottom:.3rem}
+.lead-form-card .sub{font-size:.82rem;color:var(--gray-mid);margin-bottom:1.75rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.72rem;font-weight:500;color:var(--text-mid);letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+.field input,.field select{width:100%;padding:.75rem 1rem;border:1px solid var(--gray-soft);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text-dark);background:var(--off-white);transition:border-color .2s,background .2s;outline:none;appearance:none}
+.field input:focus,.field select:focus{border-color:var(--navy-light);background:var(--white)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{width:100%;padding:1rem;background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.06em;border:none;border-radius:2px;cursor:pointer;margin-top:.5rem;transition:background .2s,transform .15s}
+.submit-btn:hover{background:var(--navy-light);transform:translateY(-1px)}
+.submit-btn.sent{background:#1D6A4A;pointer-events:none}
+.privacy{font-size:.73rem;color:var(--gray-mid);text-align:center;margin-top:12px}
+
+/* FOOTER */
+footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white)}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:.75rem;color:rgba(255,255,255,.2)}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);border:1px solid var(--gold);border-radius:3px;padding:1rem 1.5rem;font-size:.9rem;z-index:999;display:none}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translate(24px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:7rem 1.5rem 4rem}
+  .hero-bg-block,.hero-grid,.hero-float{display:none}
+  .about{grid-template-columns:1fr}
+  .about-left,.about-right{padding:3rem 1.5rem;border:none}
+  .carrossel-section{padding:4rem 0}
+  .carrossel-header{padding:0 1.5rem}
+  .carrossel-track{padding:0 1.5rem}
+  .emp-slide{min-width:300px}
+  .reg-grid{grid-template-columns:1fr 1fr}
+  .regioes{padding:4rem 1.5rem}
+  .lead-container{grid-template-columns:1fr;gap:2.5rem}
+  .lead-section{padding:4rem 1.5rem}
+  footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
+  .footer-links{justify-content:center}
+}
+@media(max-width:500px){
+  .reg-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Alexandre Damasceno<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#empreendimentos">Empreendimentos</a></li>
+    <li><a href="#regioes">Regiões</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Falar com corretor</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-block"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Alto Padrão · Barra · Recreio · Zona Sul</div>
+    <h1>Empreendimentos<br>de alto padrão<br>com <em>quem entende</em>.</h1>
+    <p>Sou Alexandre Damasceno, consultor especializado em imóveis e empreendimentos exclusivos no Rio de Janeiro. Atendimento personalizado para quem busca o melhor.</p>
+    <div class="hero-btns">
+      <a href="#contato" class="btn-primary">Quero ser atendido</a>
+      <a href="#empreendimentos" class="btn-outline">Ver empreendimentos</a>
+    </div>
+  </div>
+  <div class="hero-float">
+    <div class="hero-stat-card"><div class="num">200+</div><div class="lbl">imóveis negociados</div></div>
+    <div class="hero-stat-card"><div class="num">10+</div><div class="lbl">anos de experiência</div></div>
+    <div class="hero-stat-card"><div class="num">98%</div><div class="lbl">clientes satisfeitos</div></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="about-left">
+    <span class="section-tag">Quem sou eu</span>
+    <h2>Consultoria exclusiva em alto padrão</h2>
+    <p>Sou Alexandre Damasceno, consultor de imóveis especializado em empreendimentos e residências de alto padrão no Rio de Janeiro. Trabalho com a Lopes Rio conectando clientes exigentes às melhores oportunidades da Barra da Tijuca, Recreio dos Bandeirantes e Zona Sul.</p>
+    <p>Cada cliente recebe atenção individual, curadoria de empreendimentos alinhada ao seu perfil e acompanhamento completo — do primeiro contato à entrega das chaves.</p>
+    <div class="creci-badge">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <strong>CRECI · 106.899</strong> &nbsp;·&nbsp; Lopes Rio
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="diferencial">
+      <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div><h3>Especialização local</h3><p>Domínio completo do mercado de alto padrão na Barra, Recreio e Zona Sul — lançamentos, preços e oportunidades exclusivas.</p></div>
+    </div>
+    <div class="diferencial">
+      <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div><h3>Curadoria de empreendimentos</h3><p>Acesso antecipado a lançamentos exclusivos antes de chegarem ao mercado aberto.</p></div>
+    </div>
+    <div class="diferencial">
+      <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><h3>Segurança jurídica total</h3><p>Acompanhamento em toda documentação e processos legais para uma negociação 100% segura.</p></div>
+    </div>
+    <div class="diferencial">
+      <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div><h3>Resposta em até 1 hora</h3><p>Disponibilidade e agilidade para apresentar as melhores oportunidades no momento certo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARROSSEL DE EMPREENDIMENTOS -->
+<section class="carrossel-section" id="empreendimentos">
+  <div class="carrossel-header">
+    <span class="section-tag">Vitrine de lançamentos</span>
+    <h2>Empreendimentos em destaque</h2>
+    <p>Os empreendimentos mais exclusivos do Rio de Janeiro</p>
+  </div>
+  <div class="carrossel-track-wrap">
+    <div class="carrossel-track" id="track">
+
+
+      <!-- PURA por Artefacto -->
+      <div class="emp-slide">
+        <img class="emp-slide-img" src="https://ilhapuraartefacto.com.br/wp-content/uploads/2024/10/pura-artefacto-fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80'" alt="PURA por Artefacto Ilha Pura"/>
+        <div class="emp-slide-body">
+          <div class="emp-slide-tag">Lançamento 2026 · Barra da Tijuca</div>
+          <div class="emp-slide-name">PURA por Artefacto</div>
+          <div class="emp-slide-sub">Ilha Pura · BTG Pactual · 544 unidades · 3 e 4 suítes · 117 a 264 m²</div>
+          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
+        </div>
+      </div>
+
+      <!-- Lanai Recreio -->
+      <div class="emp-slide">
+        <img class="emp-slide-img" src="https://lanaipontaloceanico.com/wp-content/uploads/2024/lanai-fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80'" alt="Lanai Recreio Pontal Oceânico"/>
+        <div class="emp-slide-body">
+          <div class="emp-slide-tag">Recreio · Pontal Oceânico</div>
+          <div class="emp-slide-name">Lanai Recreio</div>
+          <div class="emp-slide-sub">Calçada & Montserrat · 2 e 3 quartos · 52 a 116 m² · Obra por administração</div>
+          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
+        </div>
+      </div>
+
+      <!-- Oceana Golf -->
+      <div class="emp-slide">
+        <img class="emp-slide-img" src="https://www.patrimar.com.br/imoveis/oceana-golf/assets/img/fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80'" alt="Oceana Golf Barra da Tijuca"/>
+        <div class="emp-slide-body">
+          <div class="emp-slide-tag">Barra da Tijuca</div>
+          <div class="emp-slide-name">Oceana Golf</div>
+          <div class="emp-slide-sub">Patrimar · Ao lado do Campo Olímpico · 194 a 537 m² · 4 suítes · Vista mar</div>
+          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
+        </div>
+      </div>
+
+      <!-- Grand Quartier Rio 2 -->
+      <div class="emp-slide">
+        <img class="emp-slide-img" src="https://grandquartierresidencial.com.br/wp-content/uploads/2024/01/grand-quartier-fachada.jpg" onerror="this.src='https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80'" alt="Grand Quartier Rio 2"/>
+        <div class="emp-slide-body">
+          <div class="emp-slide-tag">Barra da Tijuca · Rio 2</div>
+          <div class="emp-slide-name">Grand Quartier Rio 2</div>
+          <div class="emp-slide-sub">Patrimar & Carvalho Hosken · 2 a 4 suítes · Coberturas até 292 m²</div>
+          <a href="#contato" class="emp-slide-cta">Solicitar informações →</a>
+        </div>
+      </div>
+
+      <!-- Zona Sul -->
+      <div class="emp-slide">
+        <img class="emp-slide-img" src="https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?w=800&q=80" alt="Zona Sul Rio de Janeiro"/>
+        <div class="emp-slide-body">
+          <div class="emp-slide-tag">Zona Sul · Ipanema · Leblon</div>
+          <div class="emp-slide-name">Lançamentos Zona Sul</div>
+          <div class="emp-slide-sub">Ipanema · Leblon · Botafogo · Empreendimentos exclusivos com vista mar</div>
+          <a href="#contato" class="emp-slide-cta">Consulte disponibilidade →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="carrossel-nav">
+    <button class="carrossel-btn" id="prev" aria-label="Anterior">&#8592;</button>
+    <button class="carrossel-btn" id="next" aria-label="Próximo">&#8594;</button>
+  </div>
+</section>
+
+<!-- REGIÕES -->
+<section class="regioes" id="regioes">
+  <div class="section-header">
+    <span class="section-tag" style="display:block">Áreas de atuação</span>
+    <h2>Onde atuo no Rio de Janeiro</h2>
+  </div>
+  <div class="reg-grid">
+    <div class="reg-card">
+      <div class="reg-num">01</div>
+      <div class="reg-name">Barra da Tijuca</div>
+      <div class="reg-tag">Alto Padrão</div>
+      <div class="reg-desc">O epicentro dos grandes lançamentos. Condomínios exclusivos, frente para o mar e o mais alto padrão construtivo do Rio.</div>
+    </div>
+    <div class="reg-card">
+      <div class="reg-num">02</div>
+      <div class="reg-name">Recreio dos Bandeirantes</div>
+      <div class="reg-tag">Valorização</div>
+      <div class="reg-desc">Natureza e tranquilidade com bairro em plena expansão. Melhor valorização da Zona Oeste nos últimos anos.</div>
+    </div>
+    <div class="reg-card">
+      <div class="reg-num">03</div>
+      <div class="reg-name">Zona Sul</div>
+      <div class="reg-tag">Exclusividade</div>
+      <div class="reg-desc">Ipanema, Leblon, Botafogo e São Conrado. O charme e a sofisticação da orla mais icônica do Brasil.</div>
+    </div>
+    <div class="reg-card">
+      <div class="reg-num">04</div>
+      <div class="reg-name">Jacarepaguá</div>
+      <div class="reg-tag">Investimento</div>
+      <div class="reg-desc">Empreendimentos modernos em crescimento acelerado. Ideal para quem busca rentabilidade e qualidade de vida.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="lead-section" id="contato">
+  <div class="lead-container">
+    <div class="lead-left">
+      <span class="section-tag">Entre em contato</span>
+      <h2>Vamos encontrar seu <em>imóvel ideal</em></h2>
+      <p>Preencha o formulário ou me chame diretamente. Respondo em até 1 hora, sem compromisso.</p>
+      <div class="social-links">
+        <a href="https://wa.me/5521972653971" target="_blank" class="social-link">
+          <div class="social-icon icon-wa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.849L.057 23.714a.5.5 0 00.614.664l6.083-1.593A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 01-5.127-1.416l-.367-.217-3.804.997.969-3.713-.238-.381A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </div>
+          <div class="social-link-text"><span class="social-link-label">WhatsApp</span><span class="social-link-value">(21) 97265-3971</span></div>
+        </a>
+        <a href="https://instagram.com/alexandredamasceno_imoveis" target="_blank" class="social-link">
+          <div class="social-icon icon-ig">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+          </div>
+          <div class="social-link-text"><span class="social-link-label">Instagram</span><span class="social-link-value">@alexandredamasceno_imoveis</span></div>
+        </a>
+        <a href="https://facebook.com/alexandredamascenocorretor" target="_blank" class="social-link">
+          <div class="social-icon icon-fb">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <div class="social-link-text"><span class="social-link-label">Facebook</span><span class="social-link-value">Alexandre Damasceno</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="lead-form-card">
+      <h3>Fale com Alexandre</h3>
+      <p class="sub">Respondo em até 1 hora · Sem compromisso</p>
+      <form id="leadForm" onsubmit="submitForm(event)">
+        <div class="field"><label>Nome completo</label><input type="text" placeholder="Como posso te chamar?" required/></div>
+        <div class="field-row">
+          <div class="field"><label>WhatsApp</label><input type="tel" placeholder="(21) 99999-9999" required/></div>
+          <div class="field"><label>E-mail</label><input type="email" placeholder="seu@email.com"/></div>
+        </div>
+        <div class="field"><label>Interesse</label>
+          <select required>
+            <option value="">Selecione...</option>
+            <option>Comprar imóvel de alto padrão</option>
+            <option>Investir em empreendimento</option>
+            <option>Conhecer lançamentos exclusivos</option>
+            <option>Avaliar meu imóvel</option>
+            <option>Alugar</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Região</label>
+            <select>
+              <option value="">Qualquer</option>
+              <option>Barra da Tijuca</option>
+              <option>Recreio</option>
+              <option>Zona Sul</option>
+              <option>Jacarepaguá</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="field"><label>Orçamento</label>
+            <select>
+              <option value="">Não definido</option>
+              <option>R$ 500k – R$ 1M</option>
+              <option>R$ 1M – R$ 2M</option>
+              <option>R$ 2M – R$ 5M</option>
+              <option>Acima de R$ 5M</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Enviar mensagem</button>
+        <p class="privacy">Seus dados são confidenciais e não serão compartilhados.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Alexandre Damasceno<span>.</span></div>
+  <ul class="footer-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#empreendimentos">Empreendimentos</a></li>
+    <li><a href="#regioes">Regiões</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Alexandre Damasceno · CRECI 106.899 · Lopes Rio</div>
+</footer>
+
+<div class="toast" id="toast">✓ Mensagem enviada! Retorno em até 1 hora.</div>
+
+<script>
+// Carrossel
+const track = document.getElementById('track');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const slideW = () => track.querySelector('.emp-slide').offsetWidth + 24;
+next.addEventListener('click', () => track.scrollBy({left: slideW(), behavior: 'smooth'}));
+prev.addEventListener('click', () => track.scrollBy({left: -slideW(), behavior: 'smooth'}));
+
+// Drag to scroll
+let isDown = false, startX, scrollLeft;
+track.addEventListener('mousedown', e => { isDown = true; track.style.cursor = 'grabbing'; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+
+// Form
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Enviando...'; btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✓ Enviado!'; btn.classList.add('sent');
+    const t = document.getElementById('toast'); t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 4000);
+  }, 1200);
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), {threshold:.1});
+document.querySelectorAll('.diferencial,.reg-card,.lead-form-card,.social-link').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity .5s ease,transform .5s ease'; obs.observe(el); });
+</script>
+</body>
+</html>
