@@ -5,23 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Alexandre Damasceno | Imóveis de Alto Padrão · Rio de Janeiro</title>
 <meta name="description" content="Especialista em empreendimentos de alto padrão na Barra da Tijuca, Recreio e Zona Sul do Rio de Janeiro."/>
-
-<!-- Open Graph: preview ao compartilhar no WhatsApp, Instagram, Facebook -->
-<meta property="og:title" content="Alexandre Damasceno | Imóveis de Alto Padrão no Rio de Janeiro"/>
-<meta property="og:description" content="Consultoria exclusiva em empreendimentos de alto padrão na Barra da Tijuca, Recreio dos Bandeirantes e Zona Sul. Fale comigo no WhatsApp."/>
-<meta property="og:image" content="https://site-corretor-seven.vercel.app/IMAGEM_ALEXANDRE_FOTO.jpg"/>
-<meta property="og:url" content="https://site-corretor-seven.vercel.app/"/>
-<meta property="og:type" content="website"/>
-<meta property="og:locale" content="pt_BR"/>
-
-<!-- Twitter Card (mesma função, usado por alguns apps) -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Alexandre Damasceno | Imóveis de Alto Padrão no Rio de Janeiro"/>
-<meta name="twitter:description" content="Consultoria exclusiva em empreendimentos de alto padrão na Barra da Tijuca, Recreio e Zona Sul."/>
-<meta name="twitter:image" content="https://site-corretor-seven.vercel.app/IMAGEM_ALEXANDRE_FOTO.jpg"/>
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -57,22 +40,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .btn-primary{padding:.9rem 2rem;background:#25D366;color:var(--white);font-size:.85rem;font-weight:500;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
 .btn-primary:hover{background:#1eaa52;transform:translateY(-1px)}
-.btn-outline{padding:.9rem 2rem;background:transparent;color:var(--white);font-size:.85rem;border-radius:2px;text-decoration:none;border:1.5px solid rgba(255,255,255,.4);cursor:pointer;transition:border-color .2s,color .2s}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-outline{display:none;}
 
-/* Stats bar */
-.hero-stats{position:absolute;bottom:0;right:5%;z-index:3;display:flex;flex-direction:column;gap:10px;padding-bottom:5rem}
-.hero-stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);border-radius:3px;padding:1.1rem 1.4rem;min-width:165px;backdrop-filter:blur(8px)}
-.hero-stat-card .num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--gold-light);line-height:1}
-.hero-stat-card .lbl{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:4px}
-
-/* Slider controls */
-.slider-dots{position:absolute;top:50%;right:2rem;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:8px}
-.slider-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
-.slider-dot.active{background:var(--gold);transform:scale(1.4)}
-.slider-arrows{position:absolute;bottom:5rem;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:8px}
-.slider-arrow{width:42px;height:42px;border-radius:2px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--white);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
-.slider-arrow:hover{border-color:var(--gold);background:rgba(201,168,76,.15)}
+/* Stats bar - removido */
 
 /* SOBRE */
 .about{display:grid;grid-template-columns:1fr 1fr}
@@ -142,6 +112,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white)}
 .footer-logo span{color:var(--gold)}
+.footer-logo-sub{font-size:.75rem;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:.05em;margin-top:2px}
 .footer-links{display:flex;gap:2rem;list-style:none}
 .footer-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--gold)}
@@ -228,7 +199,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 
   <!-- Conteúdo dinâmico -->
   <div class="hero-content">
-    <div class="hero-tag">Alto Padrão · Barra · Recreio · Zona Sul</div>
+    <div class="hero-tag">Alto Padrão · Barra · Recreio · Zona Sul · Centro</div>
     <div class="hero-slide-info" id="slideInfo">
       <div class="hero-slide-label" id="slideLabel">Recreio · Pontal Oceânico</div>
       <div class="hero-slide-name" id="slideName">Feel Pontal Oceânico</div>
@@ -239,16 +210,10 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.849L.057 23.714a.5.5 0 00.614.664l6.083-1.593A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 01-5.127-1.416l-.367-.217-3.804.997.969-3.713-.238-.381A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         Falar no WhatsApp
       </a>
-      <a href="#sobre" class="btn-outline">Conheça Alexandre ↓</a>
     </div>
   </div>
 
-  <!-- Stats lado direito -->
-  <div class="hero-stats">
-    <div class="hero-stat-card"><div class="num">+10</div><div class="lbl">anos de experiência no setor</div></div>
-    <div class="hero-stat-card"><div class="num">100%</div><div class="lbl">atendimento personalizado</div></div>
-    <div class="hero-stat-card"><div class="num">1h</div><div class="lbl">tempo médio de resposta</div></div>
-  </div>
+  <!-- Stats removido -->
 
   <!-- Dots navegação -->
   <div class="slider-dots" id="sliderDots">
@@ -269,28 +234,21 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   <div class="about-left">
     <span class="section-tag">Quem sou eu</span>
     <h2>Consultoria exclusiva em alto padrão</h2>
-    <p>Sou Alexandre Damasceno, consultor de imóveis especializado em empreendimentos e residências de alto padrão no Rio de Janeiro. Trabalho em parceria com a Lopes Rio conectando clientes exigentes às melhores oportunidades da Barra da Tijuca, Recreio dos Bandeirantes e Zona Sul.</p>
+    <p>Sou Alexandre Damasceno, consultor de imóveis especializado em empreendimentos e residências de alto padrão no Rio de Janeiro. Trabalho em parceria com a Lopes Rio conectando clientes exigentes às melhores oportunidades da Barra da Tijuca, Recreio dos Bandeirantes, Zona Sul e Centro.</p>
     <p>Cada cliente recebe atenção individual, curadoria de empreendimentos alinhada ao seu perfil e acompanhamento completo — do primeiro contato à entrega das chaves.</p>
     <div class="creci-badge">
       <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       <strong>CRECI · 106.899</strong> &nbsp;·&nbsp; Lopes Rio
     </div>
+    <!-- FOTO DO ALEXANDRE -->
     <div class="about-photo-wrap">
-      <img src="IMAGEM_ALEXANDRE_FOTO.jpg" alt="Alexandre Damasceno, consultor de imóveis"/>
+      <img src="alexandre-blazer-bege.jpg" alt="Alexandre Damasceno, consultor de imóveis"/>
     </div>
   </div>
   <div class="about-right">
     <div class="diferencial">
       <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <div><h3>Especialização local</h3><p>Domínio completo do mercado de alto padrão na Barra, Recreio e Zona Sul — lançamentos, preços e oportunidades exclusivas.</p></div>
-    </div>
-    <div class="diferencial">
-      <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-      <div><h3>Curadoria de empreendimentos</h3><p>Acesso antecipado a lançamentos exclusivos antes de chegarem ao mercado aberto.</p></div>
-    </div>
-    <div class="diferencial">
-      <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div><h3>Segurança jurídica total</h3><p>Acompanhamento em toda documentação e processos legais para uma negociação 100% segura.</p></div>
+      <div><h3>Curadoria de empreendimentos</h3><p>Domínio completo do mercado de alto padrão na Barra, Recreio, Zona Sul e Centro — lançamentos, preços e oportunidades exclusivas.</p></div>
     </div>
     <div class="diferencial">
       <div class="diferencial-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
@@ -326,9 +284,9 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
     </div>
     <div class="reg-card">
       <div class="reg-num">04</div>
-      <div class="reg-name">Jacarepaguá</div>
+      <div class="reg-name">Centro</div>
       <div class="reg-tag">Investimento</div>
-      <div class="reg-desc">Empreendimentos modernos em crescimento acelerado. Ideal para quem busca rentabilidade e qualidade de vida.</div>
+      <div class="reg-desc">O coração financeiro do Rio. Ótimas oportunidades para investidores que buscam valorização e rentabilidade.</div>
     </div>
   </div>
 </section>
@@ -387,7 +345,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
               <option>Barra da Tijuca</option>
               <option>Recreio</option>
               <option>Zona Sul</option>
-              <option>Jacarepaguá</option>
+              <option>Centro</option>
               <option>Outro</option>
             </select>
           </div>
@@ -409,14 +367,17 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Alexandre Damasceno<span>.</span></div>
+  <div>
+    <div class="footer-logo">Alexandre Damasceno<span>.</span></div>
+    <div class="footer-logo-sub">Consultor Imobiliário · CRECI 106.899</div>
+  </div>
   <ul class="footer-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#empreendimentos">Empreendimentos</a></li>
     <li><a href="#regioes">Regiões</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
-  <div class="footer-copy">© 2026 Alexandre Damasceno · CRECI 106.899 · Lopes Rio</div>
+  <div class="footer-copy">© 2026 Alexandre Damasceno · Lopes Rio</div>
 </footer>
 
 <div class="toast" id="toast">✓ Mensagem enviada! Retorno em até 1 hora.</div>
