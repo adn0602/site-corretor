@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Alexandre Damasceno | Imóveis de Alto Padrão · Rio de Janeiro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandre Damasceno | Imóveis de Alto Padrão - Rio de Janeiro</title>
 <meta name="description" content="Especialista em empreendimentos de alto padrão na Barra da Tijuca, Recreio e Zona Sul do Rio de Janeiro."/>
+<meta property="og:title" content="Alexandre Damasceno | Imóveis de Alto Padrão no Rio de Janeiro"/>
+<meta property="og:description" content="Consultoria exclusiva em empreendimentos de alto padrão na Barra da Tijuca, Recreio dos Bandeirantes e Zona Sul. Fale comigo no WhatsApp."/>
+<meta property="og:image" content="IMAGEM_ALEXANDRE_FOTO.jpg"/>
+<meta property="og:url" content="https://site-corrector-seven.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Alexandre Damasceno | Imóveis de Alto Padrão no Rio de Janeiro"/>
+<meta name="twitter:description" content="Consultoria exclusiva em empreendimentos de alto padrão na Barra da Tijuca, Recreio e Zona Sul."/>
+<meta name="twitter:image" content="IMAGEM_ALEXANDRE_FOTO.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -13,18 +23,22 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);overflow-x:hidden}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-soft)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--navy)}
 .nav-logo span{color:var(--gold)}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{font-size:0.78rem;color:var(--text-mid);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{font-size:0.78rem;font-weight:500;color:var(--white);background:var(--navy);padding:.6rem 1.4rem;border-radius:2px;text-decoration:none;transition:background .2s}
-.nav-cta:hover{background:var(--navy-light)}
-
-/* HERO SLIDER FULLSCREEN */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:36px;height:36px}
+.hamburger span{display:block;height:2px;background:var(--navy);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-soft);z-index:99;flex-direction:column;padding:1rem 1.5rem 1.5rem;gap:.25rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:.9rem;color:var(--text-dark);text-decoration:none;padding:.75rem .5rem;border-bottom:1px solid var(--gray-soft);letter-spacing:.04em}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu-wa{margin-top:.5rem;background:var(--navy);color:var(--white)!important;text-align:center;border-radius:2px;padding:.85rem!important;font-weight:500;border:none!important}
 .hero-slider{position:relative;width:100%;height:100vh;overflow:hidden;background:#000}
 .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;z-index:0}
 .hero-slide.active{opacity:1;z-index:1}
@@ -40,11 +54,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .btn-primary{padding:.9rem 2rem;background:#25D366;color:var(--white);font-size:.85rem;font-weight:500;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
 .btn-primary:hover{background:#1eaa52;transform:translateY(-1px)}
-.btn-outline{display:none;}
-
-/* Stats bar - removido */
-
-/* SOBRE */
+.slider-dots{position:absolute;top:50%;right:2rem;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:8px}
+.slider-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
+.slider-dot.active{background:var(--gold);transform:scale(1.4)}
+.slider-arrows{position:absolute;bottom:5rem;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:8px}
+.slider-arrow{width:42px;height:42px;border-radius:2px;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--white);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.slider-arrow:hover{border-color:var(--gold);background:rgba(201,168,76,.15)}
 .about{display:grid;grid-template-columns:1fr 1fr}
 .about-left{background:var(--white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--gray-soft)}
 .section-tag{font-size:.7rem;font-weight:500;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;display:block}
@@ -60,8 +75,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .diferencial-icon svg{stroke:var(--gold)}
 .diferencial h3{font-size:.9rem;font-weight:500;color:var(--navy);margin-bottom:4px}
 .diferencial p{font-size:.85rem;color:var(--text-mid);line-height:1.6}
-
-/* REGIÕES */
 .regioes{padding:6rem 3rem;background:var(--white)}
 .section-header{text-align:center;margin-bottom:3.5rem}
 .section-header h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:500;color:var(--navy);margin-top:.5rem}
@@ -76,8 +89,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .reg-name{font-size:.95rem;font-weight:500;color:var(--navy);margin-bottom:.5rem;transition:color .25s}
 .reg-tag{display:inline-block;font-size:.68rem;font-weight:500;letter-spacing:.08em;padding:3px 10px;border-radius:20px;background:var(--off-white);color:var(--gold);margin-bottom:.65rem;transition:background .25s,color .25s}
 .reg-desc{font-size:.83rem;color:var(--text-mid);line-height:1.65;transition:color .25s}
-
-/* CONTATO */
 .lead-section{background:var(--navy);padding:6rem 3rem;position:relative;overflow:hidden}
 .lead-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:52px 52px}
 .lead-container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:980px;margin:0 auto;align-items:center}
@@ -107,8 +118,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .submit-btn:hover{background:var(--navy-light);transform:translateY(-1px)}
 .submit-btn.sent{background:#1D6A4A;pointer-events:none}
 .privacy{font-size:.73rem;color:var(--gray-mid);text-align:center;margin-top:12px}
-
-/* FOOTER */
 footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white)}
 .footer-logo span{color:var(--gold)}
@@ -118,52 +127,33 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{font-size:.75rem;color:rgba(255,255,255,.2)}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);border:1px solid var(--gold);border-radius:3px;padding:1rem 1.5rem;font-size:.9rem;z-index:999;display:none}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeLeft{from{opacity:0;transform:translate(24px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
-
-/* HAMBURGUER */
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;width:36px;height:36px}
-.hamburger span{display:block;height:2px;background:var(--navy);border-radius:2px;transition:all .25s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-soft);z-index:99;flex-direction:column;padding:1rem 1.5rem 1.5rem;gap:.25rem}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-size:.9rem;color:var(--text-dark);text-decoration:none;padding:.75rem .5rem;border-bottom:1px solid var(--gray-soft);letter-spacing:.04em}
-.mobile-menu a:last-child{border-bottom:none}
-.mobile-menu-wa{margin-top:.5rem;background:var(--navy);color:var(--white)!important;text-align:center;border-radius:2px;padding:.85rem!important;font-weight:500;border:none!important}
-
 @media(max-width:900px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-  .nav-cta-desktop{display:none}
-  .hamburger{display:flex}
-  .hero-stats{display:none}
-  .slider-dots{right:1rem}
-  .hero-content{padding:0 1.5rem 6rem}
-  .slider-arrows{bottom:1.5rem}
-  .about{grid-template-columns:1fr}
-  .about-left,.about-right{padding:3rem 1.5rem;border:none}
-  .reg-grid{grid-template-columns:1fr 1fr}
-  .regioes{padding:4rem 1.5rem}
-  .lead-container{grid-template-columns:1fr;gap:2.5rem}
-  .lead-section{padding:4rem 1.5rem}
-  .field-row{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
-  .footer-links{justify-content:center}
+nav{padding:1rem 1.5rem}
+.nav-links{display:none}
+.hamburger{display:flex}
+.slider-dots{right:1rem}
+.hero-content{padding:0 1.5rem 6rem}
+.slider-arrows{bottom:1.5rem}
+.about{grid-template-columns:1fr}
+.about-left,.about-right{padding:3rem 1.5rem;border:none}
+.reg-grid{grid-template-columns:1fr 1fr}
+.regioes{padding:4rem 1.5rem}
+.lead-container{grid-template-columns:1fr;gap:2.5rem}
+.lead-section{padding:4rem 1.5rem}
+.field-row{grid-template-columns:1fr}
+footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
+.footer-links{justify-content:center}
 }
 @media(max-width:500px){
-  .reg-grid{grid-template-columns:1fr}
-  .hero-slide-name{font-size:2rem}
-  .hero-btns{flex-direction:column}
-  .hero-btns a{text-align:center}
+.reg-grid{grid-template-columns:1fr}
+.hero-slide-name{font-size:2rem}
+.hero-btns{flex-direction:column}
+.hero-btns a{text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Alexandre Damasceno<span>.</span></div>
   <ul class="nav-links" id="navLinks">
@@ -172,11 +162,11 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
     <li><a href="#regioes" onclick="closeMenu()">Regiões</a></li>
     <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
   </ul>
-  <a href="#contato" class="nav-cta nav-cta-desktop">Falar com corretor</a>
   <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="#sobre" onclick="closeMenu()">Sobre</a>
   <a href="#empreendimentos" onclick="closeMenu()">Empreendimentos</a>
@@ -185,9 +175,7 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   <a href="https://wa.me/5521972653971?text=Ol%C3%A1%20Alexandre!%20Vim%20pelo%20seu%20site." target="_blank" class="mobile-menu-wa">💬 WhatsApp</a>
 </div>
 
-<!-- HERO SLIDER FULLSCREEN -->
 <section class="hero-slider" id="empreendimentos">
-
   <div class="hero-slide active">
     <img src="IMAGEM_FEEL_FACHADA.jpg" alt="Feel Pontal Oceânico"/>
     <div class="hero-overlay"></div>
@@ -196,8 +184,6 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
     <img src="IMAGEM_ILHA_PURA.jpg" alt="Ilha Pura Astra"/>
     <div class="hero-overlay"></div>
   </div>
-
-  <!-- Conteúdo dinâmico -->
   <div class="hero-content">
     <div class="hero-tag">Alto Padrão · Barra · Recreio · Zona Sul · Centro</div>
     <div class="hero-slide-info" id="slideInfo">
@@ -206,30 +192,22 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
       <div class="hero-slide-sub" id="slideSub">Estúdio, Double Studio e Garden Studio · A 800m da Praia do Pontal · Entrada a partir de R$ 27.000</div>
     </div>
     <div class="hero-btns">
-      <a href="https://wa.me/5521972653971?text=Olá%20Alexandre!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos." target="_blank" class="btn-primary">
+      <a href="https://wa.me/5521972653971?text=Ol%C3%A1%20Alexandre!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos." target="_blank" class="btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.849L.057 23.714a.5.5 0 00.614.664l6.083-1.593A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.956 9.956 0 01-5.127-1.416l-.367-.217-3.804.997.969-3.713-.238-.381A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         Falar no WhatsApp
       </a>
     </div>
   </div>
-
-  <!-- Stats removido -->
-
-  <!-- Dots navegação -->
   <div class="slider-dots" id="sliderDots">
     <button class="slider-dot active" onclick="goToSlide(0)"></button>
     <button class="slider-dot" onclick="goToSlide(1)"></button>
   </div>
-
-  <!-- Setas -->
   <div class="slider-arrows">
     <button class="slider-arrow" onclick="changeSlide(-1)">&#8592;</button>
     <button class="slider-arrow" onclick="changeSlide(1)">&#8594;</button>
   </div>
-
 </section>
 
-<!-- SOBRE -->
 <section class="about" id="sobre">
   <div class="about-left">
     <span class="section-tag">Quem sou eu</span>
@@ -240,9 +218,8 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
       <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       <strong>CRECI · 106.899</strong> &nbsp;·&nbsp; Lopes Rio
     </div>
-    <!-- FOTO DO ALEXANDRE -->
     <div class="about-photo-wrap">
-      <img src="alexandre-blazer-bege.jpg" alt="Alexandre Damasceno, consultor de imóveis"/>
+      <img src="IMAGEM_ALEXANDRE_FOTO.jpg" alt="Alexandre Damasceno, consultor de imóveis"/>
     </div>
   </div>
   <div class="about-right">
@@ -257,7 +234,6 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   </div>
 </section>
 
-<!-- REGIÕES -->
 <section class="regioes" id="regioes">
   <div class="section-header">
     <span class="section-tag" style="display:block">Áreas de atuação</span>
@@ -291,7 +267,6 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   </div>
 </section>
 
-<!-- CONTATO -->
 <section class="lead-section" id="contato">
   <div class="lead-container">
     <div class="lead-left">
@@ -365,7 +340,6 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-logo">Alexandre Damasceno<span>.</span></div>
@@ -383,19 +357,14 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 <div class="toast" id="toast">✓ Mensagem enviada! Retorno em até 1 hora.</div>
 
 <script>
-// Menu hamburguer
 function toggleMenu(){
-  const h = document.getElementById('hamburger');
-  const m = document.getElementById('mobileMenu');
-  h.classList.toggle('open');
-  m.classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
 }
 function closeMenu(){
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('mobileMenu').classList.remove('open');
 }
-
-// Slider fullscreen
 const slides = document.querySelectorAll('.hero-slide');
 const dots = document.querySelectorAll('.slider-dot');
 const slideData = [
@@ -403,13 +372,11 @@ const slideData = [
   {label:'Barra da Tijuca · Ilha Pura', name:'Ilha Pura Astra', sub:'Pronto para morar · Financiamento BTG Pactual · Double Suite com 2 quartos'}
 ];
 let current = 0, timer;
-
 function updateSlideContent(idx) {
   document.getElementById('slideLabel').textContent = slideData[idx].label;
   document.getElementById('slideName').textContent = slideData[idx].name;
   document.getElementById('slideSub').textContent = slideData[idx].sub;
 }
-
 function goToSlide(idx) {
   slides[current].classList.remove('active');
   dots[current].classList.remove('active');
@@ -420,17 +387,12 @@ function goToSlide(idx) {
   clearInterval(timer);
   timer = setInterval(() => goToSlide(current + 1), 5000);
 }
-
 function changeSlide(dir) { goToSlide(current + dir); }
-
 timer = setInterval(() => goToSlide(current + 1), 5000);
-
-// Form → WhatsApp
 function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Enviando...'; btn.disabled = true;
-
   const form = e.target;
   const nome = form.querySelector('input[type="text"]').value;
   const whatsapp = form.querySelector('input[type="tel"]').value;
@@ -438,26 +400,16 @@ function submitForm(e) {
   const interesse = form.querySelectorAll('select')[0].value;
   const regiao = form.querySelectorAll('select')[1].value || 'Não definida';
   const orcamento = form.querySelectorAll('select')[2].value || 'Não definido';
-
-  const msg = `Olá Alexandre! Vim pelo seu site 👋\n\n`
-    + `*Nome:* ${nome}\n`
-    + `*WhatsApp:* ${whatsapp}\n`
-    + `*E-mail:* ${email}\n`
-    + `*Interesse:* ${interesse}\n`
-    + `*Região:* ${regiao}\n`
-    + `*Orçamento:* ${orcamento}`;
-
+  const msg = `Olá Alexandre! Vim pelo seu site 👋\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*E-mail:* ${email}\n*Interesse:* ${interesse}\n*Região:* ${regiao}\n*Orçamento:* ${orcamento}`;
   setTimeout(() => {
     btn.textContent = '✓ Redirecionando...'; btn.classList.add('sent');
-    const t = document.getElementById('toast'); t.style.display = 'block';
+    document.getElementById('toast').style.display = 'block';
     setTimeout(() => {
-      t.style.display = 'none';
+      document.getElementById('toast').style.display = 'none';
       window.open('https://wa.me/5521972653971?text=' + encodeURIComponent(msg), '_blank');
     }, 1000);
   }, 800);
 }
-
-// Scroll reveal
 const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), {threshold:.1});
 document.querySelectorAll('.diferencial,.reg-card,.lead-form-card,.social-link').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity .5s ease,transform .5s ease'; obs.observe(el); });
 </script>
