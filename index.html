@@ -374,7 +374,17 @@ footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
 
 <div class="toast" id="toast">✓ Mensagem enviada! Retorno em até 1 hora.</div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script>
+const SUPABASE_URL = 'https://woummmfrkqaawevjlkjn.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_uoi9w0G7WDdgxDx5mR2cMQ_QPEOCXlc';
+let supabaseClient = null;
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.supabase) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  }
+});
+
 function toggleMenu(){
   document.getElementById('hamburger').classList.toggle('open');
   document.getElementById('mobileMenu').classList.toggle('open');
@@ -409,7 +419,7 @@ function goToSlide(idx) {
 }
 function changeSlide(dir) { goToSlide(current + dir); }
 timer = setInterval(() => goToSlide(current + 1), 5000);
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Enviando...'; btn.disabled = true;
@@ -421,14 +431,37 @@ function submitForm(e) {
   const regiao = form.elements.regiao.value || 'Não definida';
   const orcamento = form.elements.orcamento.value || 'Não definido';
   const msg = `Olá Alexandre! Vim pelo seu site 👋\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*E-mail:* ${email}\n*Interesse:* ${interesse}\n*Região:* ${regiao}\n*Orçamento:* ${orcamento}`;
+  const lead = {
+    nome: nome.trim(),
+    whatsapp: whatsapp.trim(),
+    email: email === 'Não informado' ? null : email.trim(),
+    interesse,
+    regiao: regiao === 'Não definida' ? null : regiao,
+    orcamento: orcamento === 'Não definido' ? null : orcamento,
+    source: 'site',
+    page_url: window.location.href,
+    user_agent: navigator.userAgent
+  };
+  let saved = false;
+  try {
+    if (supabaseClient) {
+      const { error } = await supabaseClient.from('site_leads').insert(lead);
+      if (error) throw error;
+      saved = true;
+    }
+  } catch (error) {
+    console.warn('Não foi possível salvar o lead no Supabase:', error);
+  }
+  btn.textContent = saved ? '✓ Lead registrado' : '✓ Abrindo WhatsApp...';
+  btn.classList.add('sent');
+  document.getElementById('formStatus').textContent = saved
+    ? 'Dados registrados com segurança. Abrindo o WhatsApp para concluir o atendimento.'
+    : 'Abrindo o WhatsApp. O atendimento continuará normalmente.';
+  document.getElementById('toast').style.display = 'block';
   setTimeout(() => {
-    btn.textContent = '✓ Redirecionando...'; btn.classList.add('sent');
-    document.getElementById('toast').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('toast').style.display = 'none';
-      window.open('https://wa.me/5521972653971?text=' + encodeURIComponent(msg), '_blank');
-    }, 1000);
-  }, 800);
+    document.getElementById('toast').style.display = 'none';
+    window.open('https://wa.me/5521972653971?text=' + encodeURIComponent(msg), '_blank', 'noopener,noreferrer');
+  }, 700);
 }
 const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), {threshold:.1});
 document.querySelectorAll('.diferencial,.reg-card,.lead-form-card,.social-link').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity .5s ease,transform .5s ease'; obs.observe(el); });
