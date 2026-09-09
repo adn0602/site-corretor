@@ -142,7 +142,24 @@ footer{background:#06101E;padding:3rem;display:flex;align-items:center;justify-c
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{font-size:.75rem;color:rgba(255,255,255,.2)}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:var(--white);border:1px solid var(--gold);border-radius:3px;padding:1rem 1.5rem;font-size:.9rem;z-index:999;display:none}
+
+.empreendimentos{padding:6rem 3rem;background:var(--off-white)}
+.empreendimentos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.empreendimento-card{background:var(--white);border:1px solid var(--gray-soft);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.empreendimento-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(11,31,58,.12)}
+.empreendimento-card img{width:100%;height:250px;object-fit:cover;display:block}
+.empreendimento-body{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+.empreendimento-meta{font-size:.7rem;color:var(--gold);font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.65rem}
+.empreendimento-card h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;color:var(--navy);margin-bottom:.55rem}
+.empreendimento-card p{font-size:.85rem;color:var(--text-mid);line-height:1.65;margin-bottom:1rem}
+.empreendimento-facts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.25rem}
+.empreendimento-fact{padding:.65rem;background:var(--off-white);font-size:.76rem;color:var(--text-mid)}
+.empreendimento-fact strong{display:block;color:var(--navy);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.empreendimento-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:auto}
+.btn-outline{padding:.75rem 1rem;border:1px solid var(--navy);color:var(--navy);font-size:.8rem;text-decoration:none;border-radius:2px;transition:background .2s,color .2s}
+.btn-outline:hover{background:var(--navy);color:var(--white)}
 @media(max-width:900px){
+
 nav{padding:1rem 1.5rem}
 .nav-links{display:none}
 .hamburger{display:flex}
@@ -223,6 +240,47 @@ footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
   <div class="slider-arrows">
     <button class="slider-arrow" type="button" aria-label="Empreendimento anterior" onclick="changeSlide(-1)">&#8592;</button>
     <button class="slider-arrow" type="button" aria-label="Próximo empreendimento" onclick="changeSlide(1)">&#8594;</button>
+  </div>
+</section>
+
+<section class="empreendimentos" id="empreendimentos">
+  <div class="section-header">
+    <span class="section-tag">Seleção atual</span>
+    <h2>Empreendimentos em destaque</h2>
+  </div>
+  <div class="empreendimentos-grid">
+    <article class="empreendimento-card">
+      <img src="IMAGEM_FEEL_FACHADA.webp" alt="Fachada do Feel Pontal Oceânico" loading="lazy" width="1701" height="850"/>
+      <div class="empreendimento-body">
+        <div class="empreendimento-meta">Recreio · Pontal Oceânico</div>
+        <h3>Feel Pontal Oceânico</h3>
+        <p>Estúdio, Double Studio e Garden Studio, a aproximadamente 800 metros da Praia do Pontal.</p>
+        <div class="empreendimento-facts">
+          <div class="empreendimento-fact"><strong>Faixa de preço</strong>Consulte disponibilidade</div>
+          <div class="empreendimento-fact"><strong>Entrega</strong>Consulte previsão atualizada</div>
+        </div>
+        <div class="empreendimento-actions">
+          <a class="btn-outline" href="empreendimentos/feel-pontal-oceanico.html">Ver detalhes</a>
+          <a class="btn-primary" href="https://wa.me/5521972653971?text=Ol%C3%A1%20Alexandre!%20Tenho%20interesse%20no%20Feel%20Pontal%20Oce%C3%A2nico." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </article>
+    <article class="empreendimento-card">
+      <img src="IMAGEM_ILHA_PURA.webp" alt="Fachada do empreendimento Ilha Pura Astra" loading="lazy" width="1600" height="900"/>
+      <div class="empreendimento-body">
+        <div class="empreendimento-meta">Barra da Tijuca · Ilha Pura</div>
+        <h3>Ilha Pura Astra</h3>
+        <p>Empreendimento pronto para morar, com financiamento BTG Pactual e unidades Double Suite de 2 quartos.</p>
+        <div class="empreendimento-facts">
+          <div class="empreendimento-fact"><strong>Faixa de preço</strong>Consulte disponibilidade</div>
+          <div class="empreendimento-fact"><strong>Entrega</strong>Pronto para morar</div>
+        </div>
+        <div class="empreendimento-actions">
+          <a class="btn-outline" href="empreendimentos/ilha-pura-astra.html">Ver detalhes</a>
+          <a class="btn-primary" href="https://wa.me/5521972653971?text=Ol%C3%A1%20Alexandre!%20Tenho%20interesse%20no%20Ilha%20Pura%20Astra." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
