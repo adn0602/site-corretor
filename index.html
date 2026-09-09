@@ -438,25 +438,31 @@ async function submitForm(e) {
     interesse,
     regiao: regiao === 'Não definida' ? null : regiao,
     orcamento: orcamento === 'Não definido' ? null : orcamento,
-    source: 'site',
-    page_url: window.location.href,
+    fonte: 'site',
+    url_da_pagina: window.location.href,
     user_agent: navigator.userAgent
   };
   let saved = false;
+  let saveError = null;
   try {
-    if (supabaseClient) {
-      const { error } = await supabaseClient.from('site_leads').insert(lead);
-      if (error) throw error;
-      saved = true;
-    }
+    if (!supabaseClient) throw new Error('Supabase ainda não foi carregado.');
+    const { error } = await supabaseClient.from('leads_do_site').insert(lead);
+    if (error) throw error;
+    saved = true;
   } catch (error) {
+    saveError = error;
     console.warn('Não foi possível salvar o lead no Supabase:', error);
   }
-  btn.textContent = saved ? '✓ Lead registrado' : '✓ Abrindo WhatsApp...';
+  if (!saved) {
+    btn.textContent = 'Tentar novamente';
+    btn.disabled = false;
+    btn.classList.remove('sent');
+    document.getElementById('formStatus').textContent = 'Não foi possível registrar seus dados. Verifique a conexão e tente novamente.';
+    return;
+  }
+  btn.textContent = '✓ Lead registrado';
   btn.classList.add('sent');
-  document.getElementById('formStatus').textContent = saved
-    ? 'Dados registrados com segurança. Abrindo o WhatsApp para concluir o atendimento.'
-    : 'Abrindo o WhatsApp. O atendimento continuará normalmente.';
+  document.getElementById('formStatus').textContent = 'Dados registrados com segurança. Abrindo o WhatsApp para concluir o atendimento.';
   document.getElementById('toast').style.display = 'block';
   setTimeout(() => {
     document.getElementById('toast').style.display = 'none';
