@@ -560,6 +560,10 @@ async function submitForm(e) {
   const regiao = form.elements.regiao.value || 'Não definida';
   const orcamento = form.elements.orcamento.value || 'Não definido';
   const msg = `Olá Alexandre! Vim pelo seu site 👋\n\n*Nome:* ${nome}\n*WhatsApp:* ${whatsapp}\n*E-mail:* ${email}\n*Interesse:* ${interesse}\n*Região:* ${regiao}\n*Orçamento:* ${orcamento}`;
+  const queryParams = new URLSearchParams(window.location.search);
+  const pathMatch = window.location.pathname.match(/\/empreendimentos\/([^/]+)\.html$/i);
+  const empreendimentoSlug = queryParams.get('empreendimento') || (pathMatch ? pathMatch[1] : null);
+  const empreendimentoNome = queryParams.get('nome_empreendimento') || (pathMatch ? document.title.split('|')[0].trim() : null);
   const lead = {
     nome: nome.trim(),
     whatsapp: whatsapp.trim(),
@@ -567,9 +571,10 @@ async function submitForm(e) {
     interesse,
     regiao: regiao === 'Não definida' ? null : regiao,
     orcamento: orcamento === 'Não definido' ? null : orcamento,
+    empreendimento: empreendimentoNome,
+    empreendimento_slug: empreendimentoSlug,
     fonte: 'site',
-    url_da_pagina: window.location.href,
-    user_agent: navigator.userAgent
+    url_da_pagina: window.location.href
   };
   let saved = false;
   let saveError = null;
