@@ -64,6 +64,29 @@ create table if not exists public.leads_do_site (
   atualizado_em timestamptz not null default now()
 );
 
+-- Compatibilidade com tabelas criadas em uma execução anterior.
+-- CREATE TABLE IF NOT EXISTS não altera uma tabela que já existe.
+alter table public.leads_do_site add column if not exists criado_em timestamptz not null default now();
+alter table public.leads_do_site add column if not exists nome text;
+alter table public.leads_do_site add column if not exists whatsapp text;
+alter table public.leads_do_site add column if not exists email text;
+alter table public.leads_do_site add column if not exists interesse text;
+alter table public.leads_do_site add column if not exists regiao text;
+alter table public.leads_do_site add column if not exists orcamento text;
+alter table public.leads_do_site add column if not exists empreendimento text;
+alter table public.leads_do_site add column if not exists empreendimento_slug text;
+alter table public.leads_do_site add column if not exists url_da_pagina text;
+alter table public.leads_do_site add column if not exists fonte text not null default 'site';
+alter table public.leads_do_site add column if not exists observacoes text;
+alter table public.leads_do_site add column if not exists status_atendimento text not null default 'Novo';
+alter table public.leads_do_site add column if not exists atualizado_em timestamptz not null default now();
+
+-- Garante os campos novos do catálogo mesmo se lancamentos já existir.
+alter table public.lancamentos add column if not exists categoria_comercial text;
+alter table public.lancamentos add column if not exists estado_imovel text;
+alter table public.lancamentos add column if not exists origem_imovel text;
+alter table public.lancamentos add column if not exists ja_foi_habitado boolean;
+
 create index if not exists leads_do_site_criado_em_idx
   on public.leads_do_site (criado_em desc);
 create index if not exists leads_do_site_status_idx
